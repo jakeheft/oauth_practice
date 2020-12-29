@@ -1,8 +1,7 @@
 class SessionsController < ApplicationController
   def create
-    ### should these go in a yml file to be used as an environment variable?
-    client_id = 'ad1ca922fce4bebce6d1'
-    client_secret = '9a4126896a00ef7d1d99f75ad0b7b95be6002da6'
+    client_id = ENV['CLIENT_ID']
+    client_secret = ENV['CLIENT_SECRET']
     code = params[:code]
 
     conn = Faraday.new(url: 'https://github.com', headers: { 'Accept': 'application/json' })
