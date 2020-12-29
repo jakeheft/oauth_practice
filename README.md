@@ -1,24 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### What in tarnation did I stumble across?
+This application is a very simple Rails app that was made in order to practice implementing GitHub's OAuth. It allows a user to login to GitHub and will display their repos, both public and private, with links to each repo.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Functionality
+![functionality gif](/public/oauth_gif.gif)
