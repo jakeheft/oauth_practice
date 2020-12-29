@@ -9,11 +9,11 @@ This application is a very simple Rails app that was made in order to practice i
 
 ### How do I work this darn thing?
 1. Clone down this repo  
-`git clone git@github.com:jakeheft/oauth_practice.git`
+`$ git clone git@github.com:jakeheft/oauth_practice.git`
 2. Make sure you've got all the gems you need  
-`bundle install`
+`$ bundle install`
 3. Spin up your Rails server  
-`rails server`
+`$ rails server`
 4. Go to http://localhost:3000
 5. Click Login
 6. Log in to your GitHub Account
