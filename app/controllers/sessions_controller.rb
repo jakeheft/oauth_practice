@@ -1,7 +1,8 @@
 class SessionsController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: :create
   def create
-    client_id = ENV['CLIENT_ID']
-    client_secret = ENV['CLIENT_SECRET']
+    client_id = ENV['GITHUB_KEY']
+    client_secret = ENV['GITHUB_SECRET']
     code = params[:code]
 
     conn = Faraday.new(url: 'https://github.com', headers: { 'Accept': 'application/json' })
@@ -23,6 +24,11 @@ class SessionsController < ApplicationController
     response = conn.get('/user')
     data = JSON.parse(response.body, symbolize_names: true)
 
+    # @user = User.find_or_create_by(auth_hash)
+    # require 'pry'; binding.pry
+    # self.current_user = @user
+    # redirect_to dashboard_path
+
     user = User.find_or_create_by(uid: data[:id])
     user.username = data[:login]
     user.uid = data[:id]
@@ -30,5 +36,12 @@ class SessionsController < ApplicationController
     user.save
     session[:user_id] = user.id
     redirect_to dashboard_path
+  end
+
+  #  protected
+  private
+
+  def auth_hash
+    request.env['omniauth.auth']
   end
 end
